@@ -1,0 +1,6 @@
+DELETE FROM t_board
+WHERE articleNO in (
+SELECT articleNO FROM t_board
+START WITH articleNO = 2
+CONNECT BY PRIOR articleNO = parentNO
+);
